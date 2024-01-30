@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require("cors")
 const bodyParser = require('body-parser');
 const todoRoutes = require('./src/routes/todoRoute');
+const userRouter = require('./src/routes/userRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/api', todoRoutes);
+app.use("/api/user", userRouter)
 
 // Start the server
 app.listen(PORT, () => {
