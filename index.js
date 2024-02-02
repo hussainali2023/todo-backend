@@ -4,6 +4,7 @@ const cors = require("cors")
 const bodyParser = require('body-parser');
 const todoRoutes = require('./src/routes/todoRoute');
 const userRouter = require('./src/routes/userRoutes');
+// const imageRoutes = require("./src/routes/imageRoute")
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 // Routes
 app.use('/api', todoRoutes);
 app.use("/api/user", userRouter)
+// app.use("/api", imageRoutes)
 
 // Start the server
 app.listen(PORT, () => {
