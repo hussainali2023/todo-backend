@@ -4,15 +4,18 @@ const cors = require("cors")
 const bodyParser = require('body-parser');
 const todoRoutes = require('./src/routes/todoRoute');
 const userRouter = require('./src/routes/userRoutes');
-// const imageRoutes = require("./src/routes/imageRoute")
+const uploadRoute = require("./src/routes/uploadRoute");
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors())
+app.use(bodyParser.json())
 
+// app.use(multer({dest:"uploads/"}));
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/todo_app', {
+mongoose.connect('mongodb://localhost:27017/todo_app', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -23,7 +26,8 @@ app.use(bodyParser.json());
 // Routes
 app.use('/api', todoRoutes);
 app.use("/api/user", userRouter)
-// app.use("/api", imageRoutes)
+// app.use("/api", uploadRoute)
+app.use("/api/images", uploadRoute)
 
 // Start the server
 app.listen(PORT, () => {

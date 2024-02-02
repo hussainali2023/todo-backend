@@ -1,17 +1,12 @@
-// const mongoose = require('mongoose');
+// models/image.js
+const mongoose = require('mongoose');
 
-// const imageSchema = new mongoose.Schema({
-//   filename: String,
-//   path: String,
-//   originalname: String,
-//   mimetype: String,
-//   size: Number,
-//   uploadedAt: {
-//     type: Date,
-//     default: Date.now,
-//   },
-// });
+const imageSchema = new mongoose.Schema({
+  filename: String,
+  path: String,
+  // Add any other relevant fields
+});
 
-// const Image = mongoose.model('Image', imageSchema);
+const Image = mongoose.model('Image', imageSchema);
 
-// module.exports = Image;
+module.exports = Image;
